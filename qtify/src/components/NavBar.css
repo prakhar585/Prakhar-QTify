@@ -1,0 +1,39 @@
+.nav-components {
+    background-color: #34C94B;
+    display: flex;
+    align-items: center; /* Align everything in the center */
+    justify-content: space-between;
+    height: 65px;
+    padding: 0 10px; /* Only horizontal padding */
+}
+
+.logo {
+    height: 40px; /* Prevents stretching */
+    width: auto;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adds spacing between input and icon */
+}
+
+.search-input {
+    width: 200px; /* Adjust based on navbar size */
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+.search-icon {
+    color: black;
+    background-color: white;
+}
+
+.feedback-button {
+    background-color:black;
+    color: #34C94B;
+    text-transform: none;
+    height: 40px;
+    border-radius: 10px;
+}
