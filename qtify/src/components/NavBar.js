@@ -7,16 +7,16 @@ import Button from "./Button";
 function NavBar() {
   return (
     <Box className="nav-components">
-      {/* Logo */}
+      
       <Logo className="logo" />
 
-      {/* Search Bar */}
+      
       <form className="search">
         <TextField 
           className="search-input" 
           variant="outlined" 
           size="small"
-          placeholder="Search..."
+          placeholder="Search"
         />
         <IconButton className="search-icon">
           <SearchIcon />
