@@ -11,7 +11,7 @@ function Hero() {
           </div>
           <div>
             <img
-              src={require("./../assets/hero_headphone.png")}
+              src={require("./../../assets/HeroImg.png")}
               width={212}
               alt="headphones"
             />
