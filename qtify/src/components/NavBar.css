@@ -1,18 +1,19 @@
 .nav-components {
     background-color: #34C94B;
     display: flex;
-    align-items: center; /* Align everything in the center */
+    align-items: center;
     justify-content: space-between;
     height: 65px;
-    padding: 0 10px; /* Only horizontal padding */
+    padding: 0 32px; /* Increased padding for logo spacing */
 }
 
 .logo {
-    height: 40px; /* Prevents stretching */
+    height: 40px;
     width: auto;
-    margin-left:20px
-
+    margin: 0;  /* Remove margin-left and let padding handle spacing */
+    display: block; /* Ensure proper vertical alignment */
 }
+
 
 .search {
     display: flex;
@@ -23,13 +24,24 @@
 .search-input {
     width: 200px; /* Adjust based on navbar size */
     background-color: white;
-    border-radius: 5px;
-
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 2px solid grey;
+    height: 40px;
 }
 
 .search-icon {
-    color: black;
+    /* color: black; */
+}
+
+.search-icon-div{
     background-color: white;
+    margin-left: -5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 42px;
+    border: 2px solid grey;
+    border-left: 0;
 }
 
 .feedback-button {
