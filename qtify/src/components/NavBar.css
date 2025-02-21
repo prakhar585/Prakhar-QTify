@@ -4,14 +4,14 @@
     align-items: center;
     justify-content: space-between;
     height: 65px;
-    padding: 0 32px; /* Increased padding for logo spacing */
+    padding: 0 10px;
 }
 
 .logo {
     height: 40px;
     width: auto;
-    margin: 0;  /* Remove margin-left and let padding handle spacing */
-    display: block; /* Ensure proper vertical alignment */
+    margin: 12.5px 20px; /* This should center the logo vertically */
+    display: block;
 }
 
 

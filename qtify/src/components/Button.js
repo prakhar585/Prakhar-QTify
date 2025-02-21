@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Button({className, text, onClick}) {
+function Button({ className, text, onClick }) {
   return (
-    <button onClick={onClick} className='feedback-button'>
+    <button className={className} onClick={onClick}>
       {text}
-      </button>
-  )
+    </button>
+  );
 }
 
 export default Button

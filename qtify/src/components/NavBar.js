@@ -24,7 +24,7 @@ function NavBar() {
       </form>
 
       {/* Feedback Button */}
-      <Button className="feedback-button" text="Give FeedBack" onClick={null} />
+      <Button className="feedback-button" text="Give Feedback" onClick={null} />
     </nav>
   );
 }
