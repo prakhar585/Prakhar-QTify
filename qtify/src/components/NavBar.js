@@ -1,30 +1,27 @@
 import React from "react";
 import Logo from "./Logo";
 import "./../components/NavBar.css";
-import {IconButton} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import Button from "./Button";
+import logoImg from './../assets/logoImg.png';
+
 
 function NavBar() {
   return (
-    <nav className="nav-components">
-      <Logo className="logo" />
+    <nav className="navbarContainer">
+      <img 
+        src={logoImg} 
+        alt="logo" 
+        className="logo"
+      />
+      
+      <input 
+        type="text"
+        className="search-input"
+        placeholder="Search a song"
+      />
 
-      <form className="search">
-        <input
-          className="search-input"
-          placeholder="Search a song"
-          type="text"
-        />
-        <div className="search-icon-div">
-        <IconButton className="search-icon">
-          <SearchIcon />
-        </IconButton>
-        </div>
-      </form>
-
-      {/* Feedback Button */}
-      <Button className="feedback-button" text="Give Feedback" onClick={null} />
+      <button className="feedback-button">
+        Give Feedback
+      </button>
     </nav>
   );
 }
