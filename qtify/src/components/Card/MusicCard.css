@@ -9,7 +9,7 @@
   width: 159px;
   margin-left: 6px;
   margin-right: 6px;
-  background-color: #121212;
+  background-color: black !important;
 }
 .inside-container-card{
     width:159px;
@@ -26,15 +26,15 @@
     border-top-right-radius: 10px;
 }
 
-.chip{
-    width: 90px;
+.chip{ 
+    /* width: 90px; */
     height: 23px;
-    background-color: #121212;
-    color: white;
+    background-color: #121212 !important;
+    color: white !important;
 }
 
 .content-container{
-    padding: 4px 8px;
+    padding: 4px 8px; 
     
 }
 

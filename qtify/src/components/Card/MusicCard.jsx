@@ -1,25 +1,26 @@
 import React from "react";
 import { Card, CardMedia, CardContent, Chip, Box } from "@mui/material";
-import demoImg from './../../assets/test-card.png';
-import './MusicCard.css';
+import demoImg from "./../../assets/test-card.png";
+import "./MusicCard.css";
 
-const MusicCard = () => {
+const MusicCard = ({ album }) => {
+  
+//album from music card is unknowingly becoming undefined
+  
   return (
     <div>
       <Card className="Card">
         <Box className="inside-container-card">
-        <CardMedia
-          sx={{ height: 170, width:159,  }}
-          image={demoImg}
-          title="demo test"
-        />
-        <Box className="content-container">
-        <Chip label="100 follows" className="chip" />
+          <CardMedia
+            sx={{ height: 170, width: 159 }}
+            image={album.image || "https://via.placeholder.com/159x170"}
+            title={album.title || "No Title Available"}
+          />
+          <Box className="content-container">
+            <Chip label={`${album.follows} Follows`} className="chip" />
+          </Box>
         </Box>
-        </Box>
-        <Box className="footer-text">
-          New english Songs
-        </Box>
+        <Box className="footer-text">{album.title}</Box>
       </Card>
     </div>
   );
