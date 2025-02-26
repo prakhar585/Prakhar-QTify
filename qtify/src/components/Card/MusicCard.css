@@ -31,10 +31,13 @@
     height: 23px;
     background-color: #121212 !important;
     color: white !important;
+    font-size: 11px !important;
+
+    
 }
 
 .content-container{
-    padding: 4px 8px; 
+    padding: 1px 5px; 
     
 }
 

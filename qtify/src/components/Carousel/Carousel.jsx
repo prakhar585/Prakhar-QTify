@@ -38,7 +38,7 @@ const Carousel = ({ albumData }) => {
   };
 
   const breakpoints = {
-    320: { slidesPerView: 1, spaceBetween: 10 },
+    320: { slidesPerView: 2, spaceBetween: 10 },
     480: { slidesPerView: 3, spaceBetween: 20 },
     768: { slidesPerView: 5, spaceBetween: 30 },
     1024: { slidesPerView: 7, spaceBetween: 40 },
@@ -85,11 +85,8 @@ const Carousel = ({ albumData }) => {
         <Swiper
           ref={swiperRef}
           modules={[Navigation]}
-          spaceBetween={30}
-          slidesPerView={6}
+          spaceBetween={100}
           breakpoints={breakpoints}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
         >
           {albumData && albumData.length > 0 ? (
             albumData.map((album, index) => (

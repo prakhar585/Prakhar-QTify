@@ -17,7 +17,7 @@ const MusicCard = ({ album }) => {
             title={album.title || "No Title Available"}
           />
           <Box className="content-container">
-            <Chip label={`${album.follows} Follows`} className="chip" />
+            <Chip label={album.follows?(`${album.follows} Follows`):`${album.likes} likes`} className="chip" />
           </Box>
         </Box>
         <Box className="footer-text">{album.title}</Box>
