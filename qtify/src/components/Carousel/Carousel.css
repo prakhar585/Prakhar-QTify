@@ -1,49 +1,31 @@
-/* .carousel-container{
-    display: flex;
-    flex-direction: column;
-} */
 
-/* .carousel-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .nav-button.left {
-    left: -50px;
-  }
-  
-  .nav-button.right {
-    right: -50px;
-  }
-  
-  .nav-button img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .nav-button.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  
-  .loading-slide {
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
-    color: #888;
-  }
-   */
 
+   /* Remove default arrow icons */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+
+/* Style the previous button */
+.swiper-button-prev {
+  background: url('./../../assets/navigation-Left.png') no-repeat center center;
+  background-size: contain;
+  width: 40px;  /* Adjust size as needed */
+  height: 40px;
+}
+
+.swiper-button-prev:active {
+    transform: scale(0.9) rotate(-5deg);
+  }
+
+/* Style the next button */
+.swiper-button-next {
+  background: url('./../../assets/navigation-Right.png') no-repeat center center;
+  background-size: contain;
+  width: 40px;  /* Adjust size as needed */
+  height: 40px;
+}
+
+.swiper-button-next:active {
+    transform: scale(0.9) rotate(5deg);
+  }
