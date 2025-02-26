@@ -156,33 +156,224 @@
 
 // export default Carousel;
 
-import React from "react";
-import { useRef, useState, useEffect } from "react";
+// import React from "react";
+// import { useRef, useState, useEffect } from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation, Virtual } from "swiper/modules";
+// import "swiper/css";
+// import MusicCard from "../Card/MusicCard";
+// import leftNav from "./../../assets/navigation-Left.png";
+// import rightNav from "./../../assets/navigation-Right.png";
+// import "./Carousel.css"; // Import your CSS
+
+// const Carousel = ({ albumData }) => {
+//   const swiperRef = useRef(null);
+//   const prevRef = useRef(null);
+//   const nextRef = useRef(null);
+//   const [isMounted, setIsMounted] = useState(false);
+//   const [activeIndex, setActiveIndex] = useState(0);
+//   const [slidesPerView, setSlidesPerView] = useState(8);
+//   const [leftButtonPressed, setLeftButtonPressed] = useState(false);
+//   const [rightButtonPressed, setRightButtonPressed] = useState(false);
+
+//   // Set mounted after component mounts to avoid hydration issues
+//   useEffect(() => {
+//     setIsMounted(true);
+    
+//     // Initialize visible slides on mount
+//     const calculateVisibleSlides = () => {
+//       let viewCount = 8; // Default
+//       const width = window.innerWidth;
+//       if (width < 480) viewCount = 2;
+//       else if (width < 768) viewCount = 3;
+//       else if (width < 1024) viewCount = 5;
+//       else if (width < 1280) viewCount = 7;
+      
+//       setSlidesPerView(viewCount);
+//     };
+    
+//     calculateVisibleSlides();
+//     window.addEventListener('resize', calculateVisibleSlides);
+    
+//     return () => {
+//       setIsMounted(false);
+//       window.removeEventListener('resize', calculateVisibleSlides);
+//     };
+//   }, []);
+
+//   // Handle navigation manually with animation
+//   const handlePrev = () => {
+//     if (swiperRef.current && swiperRef.current.swiper) {
+//       setLeftButtonPressed(true);
+//       swiperRef.current.swiper.slidePrev();
+      
+//       // Reset animation state after animation completes
+//       setTimeout(() => {
+//         setLeftButtonPressed(false);
+//       }, 300);
+//     }
+//   };
+
+//   const handleNext = () => {
+//     if (swiperRef.current && swiperRef.current.swiper) {
+//       setRightButtonPressed(true);
+//       swiperRef.current.swiper.slideNext();
+      
+//       // Reset animation state after animation completes
+//       setTimeout(() => {
+//         setRightButtonPressed(false);
+//       }, 300);
+      
+//       // Track slides that should be removed after navigation
+//       if (swiperRef.current.swiper.activeIndex > 3) {
+//         setActiveIndex(swiperRef.current.swiper.activeIndex);
+//       }
+//     }
+//   };
+
+//   const handleSlideChange = (swiper) => {
+//     // Only update active index if we've moved significantly
+//     if (swiper.activeIndex > 3) {
+//       setActiveIndex(swiper.activeIndex);
+//     }
+//   };
+
+//   const breakpoints = {
+//     320: { slidesPerView: 2, spaceBetween: 10 },
+//     480: { slidesPerView: 3, spaceBetween: 20 },
+//     768: { slidesPerView: 5, spaceBetween: 30 },
+//     1024: { slidesPerView: 6, spaceBetween: 40 },
+//     1280: { slidesPerView: 7, spaceBetween: 50 },
+//   };
+
+//   // Function to determine if a slide should be rendered
+//   const shouldRenderSlide = (index) => {
+//     // Always render slides on initial load (activeIndex is 0)
+//     if (activeIndex <= 3) return true;
+    
+//     // After significant navigation, don't render the first two slides
+//     if (index < 2 && activeIndex > 3) return false;
+    
+//     return true;
+//   };
+
+//   return (
+//     <div className="carousel-container">
+//       <div
+//         style={{  
+//           position: 'relative', 
+//           margin: 0,
+//           padding: 0,
+//           overflow: 'hidden',
+//         }}
+//       >
+//         {/* Left Navigation Button */}
+//         <button
+//           onClick={handlePrev}
+//           style={{
+//             height: "32px",
+//             width: "32px",
+//             position: "absolute",
+//             left: "0",
+//             top: "50%",
+//             transform: `translateY(-50%) ${leftButtonPressed ? 'scale(0.9)' : 'scale(1)'}`,
+//             zIndex: "10",
+//             background: "transparent",
+//             border: "none",
+//             cursor: "pointer",
+//             padding: 0,
+//             transition: "transform 0.2s ease",
+//           }}
+//           className="nav-button opacity-80 hover:opacity-100 transition-opacity focus:outline-none"
+//           aria-label="Previous slide"
+//         >
+//           <img src={leftNav} alt="Previous" width="32" height="32" />
+//         </button>
+
+//         <Swiper
+//           ref={swiperRef}
+//           modules={[Navigation, Virtual]}
+//           virtual={true}
+//           spaceBetween={100}
+//           breakpoints={breakpoints}
+//           onSlideChange={handleSlideChange}
+//           observer={true}
+//           observeParents={true}
+//           updateOnWindowResize={true}
+//         >
+//           {albumData && albumData.length > 0 ? (
+//             albumData.map((album, index) => (
+//               <SwiperSlide key={album.id || `album-${index}`} virtualIndex={index}>
+//                 {({ isVisible }) => {
+//                   // Only apply our custom logic for the first two slides
+//                   if (!shouldRenderSlide(index)) {
+//                     return null;
+//                   }
+                  
+//                   // For all other slides, render normally
+//                   return <MusicCard album={album} />;
+//                 }}
+//               </SwiperSlide>
+//             ))
+//           ) : (
+//             <SwiperSlide className="flex items-center justify-center h-48">
+//               <div className="flex flex-col items-center gap-2">
+//                 <div className="animate-spin rounded-full h-8 w-8 border-2 border-t-blue-500"></div>
+//                 <p>Loading...</p>
+//               </div>
+//             </SwiperSlide>
+//           )}
+//         </Swiper>
+
+//         {/* Right Navigation Button - Removed black background */}
+//         <button
+//           onClick={handleNext}
+//           style={{
+//             height: "32px",
+//             width: "32px",
+//             position: "absolute",
+//             right: "0",
+//             top: "50%",
+//             transform: `translateY(-50%) ${rightButtonPressed ? 'scale(0.9)' : 'scale(1)'}`,
+//             zIndex: "10",
+//             background: "transparent",
+//             border: "none",
+//             cursor: "pointer",
+//             padding: 0,
+//             transition: "transform 0.2s ease",
+//           }}
+//           className="nav-button opacity-80 hover:opacity-100 transition-opacity focus:outline-none"
+//           aria-label="Next slide"
+//         >
+//           <img src={rightNav} alt="Next" width="32" height="32" />
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Carousel;
+
+
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Virtual } from "swiper/modules";
 import "swiper/css";
 import MusicCard from "../Card/MusicCard";
 import leftNav from "./../../assets/navigation-Left.png";
 import rightNav from "./../../assets/navigation-Right.png";
-import "./Carousel.css"; // Import your CSS
+import "./Carousel.css"; 
 
 const Carousel = ({ albumData }) => {
   const swiperRef = useRef(null);
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(8);
   const [leftButtonPressed, setLeftButtonPressed] = useState(false);
   const [rightButtonPressed, setRightButtonPressed] = useState(false);
 
-  // Set mounted after component mounts to avoid hydration issues
   useEffect(() => {
-    setIsMounted(true);
-    
-    // Initialize visible slides on mount
     const calculateVisibleSlides = () => {
-      let viewCount = 8; // Default
+      let viewCount = 8;
       const width = window.innerWidth;
       if (width < 480) viewCount = 2;
       else if (width < 768) viewCount = 3;
@@ -193,24 +384,16 @@ const Carousel = ({ albumData }) => {
     };
     
     calculateVisibleSlides();
-    window.addEventListener('resize', calculateVisibleSlides);
+    window.addEventListener("resize", calculateVisibleSlides);
     
-    return () => {
-      setIsMounted(false);
-      window.removeEventListener('resize', calculateVisibleSlides);
-    };
+    return () => window.removeEventListener("resize", calculateVisibleSlides);
   }, []);
 
-  // Handle navigation manually with animation
   const handlePrev = () => {
     if (swiperRef.current && swiperRef.current.swiper) {
       setLeftButtonPressed(true);
       swiperRef.current.swiper.slidePrev();
-      
-      // Reset animation state after animation completes
-      setTimeout(() => {
-        setLeftButtonPressed(false);
-      }, 300);
+      setTimeout(() => setLeftButtonPressed(false), 300);
     }
   };
 
@@ -218,24 +401,12 @@ const Carousel = ({ albumData }) => {
     if (swiperRef.current && swiperRef.current.swiper) {
       setRightButtonPressed(true);
       swiperRef.current.swiper.slideNext();
-      
-      // Reset animation state after animation completes
-      setTimeout(() => {
-        setRightButtonPressed(false);
-      }, 300);
-      
-      // Track slides that should be removed after navigation
-      if (swiperRef.current.swiper.activeIndex > 3) {
-        setActiveIndex(swiperRef.current.swiper.activeIndex);
-      }
+      setTimeout(() => setRightButtonPressed(false), 300);
     }
   };
 
   const handleSlideChange = (swiper) => {
-    // Only update active index if we've moved significantly
-    if (swiper.activeIndex > 3) {
-      setActiveIndex(swiper.activeIndex);
-    }
+    setActiveIndex(swiper.activeIndex);
   };
 
   const breakpoints = {
@@ -246,42 +417,24 @@ const Carousel = ({ albumData }) => {
     1280: { slidesPerView: 7, spaceBetween: 50 },
   };
 
-  // Function to determine if a slide should be rendered
-  const shouldRenderSlide = (index) => {
-    // Always render slides on initial load (activeIndex is 0)
-    if (activeIndex <= 3) return true;
-    
-    // After significant navigation, don't render the first two slides
-    if (index < 2 && activeIndex > 3) return false;
-    
-    return true;
-  };
-
   return (
     <div className="carousel-container">
-      <div
-        style={{  
-          position: 'relative', 
-          margin: 0,
-          padding: 0,
-          overflow: 'hidden',
-        }}
-      >
+      <div style={{ position: "relative", overflow: "hidden" }}>
         {/* Left Navigation Button */}
         <button
           onClick={handlePrev}
+          disabled={activeIndex === 0} // Disable when at first slide
           style={{
             height: "32px",
             width: "32px",
             position: "absolute",
             left: "0",
             top: "50%",
-            transform: `translateY(-50%) ${leftButtonPressed ? 'scale(0.9)' : 'scale(1)'}`,
+            transform: `translateY(-50%) ${leftButtonPressed ? "scale(0.9)" : "scale(1)"}`,
             zIndex: "10",
             background: "transparent",
             border: "none",
-            cursor: "pointer",
-            padding: 0,
+            cursor: activeIndex === 0 ? "not-allowed" : "pointer",
             transition: "transform 0.2s ease",
           }}
           className="nav-button opacity-80 hover:opacity-100 transition-opacity focus:outline-none"
@@ -301,18 +454,10 @@ const Carousel = ({ albumData }) => {
           observeParents={true}
           updateOnWindowResize={true}
         >
-          {albumData && albumData.length > 0 ? (
+          {albumData?.length > 0 ? (
             albumData.map((album, index) => (
               <SwiperSlide key={album.id || `album-${index}`} virtualIndex={index}>
-                {({ isVisible }) => {
-                  // Only apply our custom logic for the first two slides
-                  if (!shouldRenderSlide(index)) {
-                    return null;
-                  }
-                  
-                  // For all other slides, render normally
-                  return <MusicCard album={album} />;
-                }}
+                <MusicCard album={album} />
               </SwiperSlide>
             ))
           ) : (
@@ -325,21 +470,21 @@ const Carousel = ({ albumData }) => {
           )}
         </Swiper>
 
-        {/* Right Navigation Button - Removed black background */}
+        {/* Right Navigation Button */}
         <button
           onClick={handleNext}
+          disabled={activeIndex >= albumData.length - slidesPerView} // Disable when at last slide
           style={{
             height: "32px",
             width: "32px",
             position: "absolute",
             right: "0",
             top: "50%",
-            transform: `translateY(-50%) ${rightButtonPressed ? 'scale(0.9)' : 'scale(1)'}`,
+            transform: `translateY(-50%) ${rightButtonPressed ? "scale(0.9)" : "scale(1)"}`,
             zIndex: "10",
             background: "transparent",
             border: "none",
-            cursor: "pointer",
-            padding: 0,
+            cursor: activeIndex >= albumData.length - slidesPerView ? "not-allowed" : "pointer",
             transition: "transform 0.2s ease",
           }}
           className="nav-button opacity-80 hover:opacity-100 transition-opacity focus:outline-none"

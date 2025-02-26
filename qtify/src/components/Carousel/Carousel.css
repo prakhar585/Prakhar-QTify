@@ -1,4 +1,49 @@
-.carousel-container{
+/* .carousel-container{
     display: flex;
     flex-direction: column;
-}
+} */
+
+/* .carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .nav-button.left {
+    left: -50px;
+  }
+  
+  .nav-button.right {
+    right: -50px;
+  }
+  
+  .nav-button img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .nav-button.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .loading-slide {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
+  }
+   */
+
